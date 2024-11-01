@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // main-color change btn
+  console.log(localStorage);
+  
   const colorBg = localStorage.getItem("primary-color");
   document.documentElement.style.setProperty("--p1", colorBg);
 
@@ -160,31 +162,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // contact -Send us a message
   const btn = document.getElementById("contact-submit-btn");
-  btn && emailjs.init("Your public key");
+  btn && emailjs.init("ZJK8q05kRqJz9_J1R");
   const contactForm = document.getElementById("contact-form");
   contactForm &&
     contactForm.addEventListener("submit", function (event) {
       event.preventDefault();
       btn.value = "Sending...";
-      const serviceID = "Your service id";
-      const templateID = "Your template id";
+      const serviceID = "service_56epl9b";
+      const templateID = "template_ii6jxbl";
       // Uncomment this for working demo
-
-      // emailjs.sendForm(serviceID, templateID, this).then(
-      //   () => {
-      //     btn.value = "Send Email";
-      //     Swal.fire("Message Sent Successfully", "", "success");
-      //     document.querySelector("#name").value = "";
-      //     document.querySelector("#email").value = "";
-      //     document.querySelector("#phone").value = "";
-      //     document.querySelector("#location").value = "";
-      //     document.querySelector("#message").value = "";
-      //   },
-      //   (err) => {
-      //     btn.value = "Send Email";
-      //     alert(JSON.stringify(err));
-      //   }
-      // );
+      
+      emailjs.sendForm(serviceID, templateID, this).then(
+        () => {
+          btn.value = "Send Email";
+          Swal.fire("Message Sent Successfully", "", "success");
+          document.querySelector("#name").value = "";
+          document.querySelector("#email").value = "";
+          document.querySelector("#phone").value = "";
+          document.querySelector("#location").value = "";
+          document.querySelector("#message").value = "";
+        },
+        (err) => {
+          btn.value = "Send Email";
+          alert(JSON.stringify(err));
+        }
+      );
     });
 
   // ----------portfolio page js-------------
